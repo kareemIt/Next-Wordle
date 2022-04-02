@@ -1,0 +1,10 @@
+h1,
+p {
+  font-family: Lato;
+}
+.Game-board {
+  display: flex;
+}
+.letter {
+  border: solid red 2px;
+}
