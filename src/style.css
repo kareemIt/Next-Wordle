@@ -33,3 +33,6 @@ p {
   font-size: 40px;
   transform: rotate(45deg);
 }
+.modal-off {
+  display: none;
+}
