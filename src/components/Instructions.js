@@ -8,7 +8,7 @@ const Instructions = () => {
   };
 
   return (
-    <div className={modal ? 'modal-start' : 'modal-off'}>
+    <div className={modal ? 'modal' : 'modal-off'}>
       <div className="modal-content">
         <p>Instructions</p>
         <p>words</p>
