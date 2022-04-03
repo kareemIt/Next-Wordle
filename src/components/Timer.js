@@ -4,11 +4,13 @@ const Timer = () => {
   const [currentTime, setCurrentTime] = useState(60);
 
   useEffect(() => {
-    let updatedTime = setInterval(function () {
-      let updatingTime = currentTime - 1;
-      setCurrentTime(updatingTime);
+    const updateTime = setInterval(function () {
+      setCurrentTime(currentTime - 1);
     }, 1000);
-  });
+    return () => {
+      clearInterval(updateTime);
+    };
+  }, [currentTime]);
 
   return (
     <div>
