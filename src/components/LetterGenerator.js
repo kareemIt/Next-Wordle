@@ -13,9 +13,8 @@ const LetterGenerator = () => {
   ]);
 
   const randomizePosition = () => {
-    let random = randomLetters.sort(() => Math.random() - 0.5);
-    setRandomLetters(random);
-    console.log(random);
+    const copyArray = [...randomLetters];
+    setRandomLetters(copyArray.sort(() => Math.random() - 0.5));
   };
 
   return (
