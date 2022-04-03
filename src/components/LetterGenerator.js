@@ -19,10 +19,12 @@ const LetterGenerator = () => {
   };
 
   return (
-    <div className="Game-board">
-      {randomLetters.map((letters, index) => (
-        <div className="letter">{letters}</div>
-      ))}
+    <div>
+      <div className="Game-board">
+        {randomLetters.map((letters, index) => (
+          <div className="letter">{letters}</div>
+        ))}
+      </div>
       <button onClick={randomizePosition}>randomize position</button>
     </div>
   );

@@ -12,7 +12,7 @@ const Timer = () => {
 
   return (
     <div>
-      <div>Time Left: {currentTime}</div>
+      <div>Time Left: {currentTime} Seconds</div>
     </div>
   );
 };
