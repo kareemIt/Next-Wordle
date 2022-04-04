@@ -19,12 +19,12 @@ export default function App() {
   }, []);
   return (
     <div>
-      <Instructions />
-      <GameEnd endScreen={endScreen} />
+      {/* <Instructions /> */}
+      {/* <GameEnd endScreen={endScreen} /> */}
       <h1>GAME NAME</h1>
       <h1>Round {currentRound}</h1>
       <Timer setEndScreen={setEndScreen} />
-      <UserInput currentWord={currentWord} />
+      <UserInput />
       <LetterGenerator currentWord={currentWord} />
     </div>
   );

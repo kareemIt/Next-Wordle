@@ -37,3 +37,6 @@ p {
 .close-button:hover {
   color: red;
 }
+.userInput {
+  /* opacity: 0; */
+}

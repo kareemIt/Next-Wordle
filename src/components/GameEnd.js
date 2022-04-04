@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const GameEnd = ({ endScreen }) => {
   const [modal, setModal] = useState(true);
-  console.log(endScreen);
 
   const onClick = () => {
     setModal(!modal);
