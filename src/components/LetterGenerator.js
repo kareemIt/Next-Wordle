@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Alphabet } from '../WordBank';
 
-const LetterGenerator = () => {
-  const [randomLetters, setRandomLetters] = useState([
+const LetterGenerator = (currentWord) => {
+  const [randomUserLetters, setRandomUserLetters] = useState([
     '1',
     '2',
     '3',
@@ -12,15 +13,26 @@ const LetterGenerator = () => {
     '8',
   ]);
 
+  useEffect(() => {
+    const copyArray = [...currentWord.currentWord].sort(
+      () => Math.random() - 0.5
+    );
+    const shuffleAlphabet = Alphabet.sort(() => 0.5 - Math.random());
+    const selectedShuffle = shuffleAlphabet.slice(0, 3);
+    const combiningArrs = [...copyArray, ...selectedShuffle];
+    const finalArr = combiningArrs.sort(() => Math.random() - 0.5);
+    setRandomUserLetters(finalArr);
+  }, [currentWord]);
+
   const randomizePosition = () => {
-    const copyArray = [...randomLetters];
-    setRandomLetters(copyArray.sort(() => Math.random() - 0.5));
+    const copyArray = [...randomUserLetters];
+    setRandomUserLetters(copyArray.sort(() => Math.random() - 0.5));
   };
 
   return (
     <div>
       <div className="Game-board">
-        {randomLetters.map((letters, index) => (
+        {randomUserLetters.map((letters, index) => (
           <div className="letter">{letters}</div>
         ))}
       </div>
