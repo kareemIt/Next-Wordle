@@ -5,6 +5,7 @@ p {
 .Game-board {
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 }
 .letter {
   border: solid grey 2px;
@@ -12,6 +13,9 @@ p {
   height: 25px;
   padding: 8px;
   font-size: 30px;
+}
+.display-time {
+  padding-bottom: 10px;
 }
 body {
   background: black;
@@ -64,4 +68,6 @@ body {
 }
 .user-input {
   opacity: 0;
+  width: 0px;
+  padding: 12px;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
 
-const UserInput = () => {
+const UserInput = ({ setCurrentRound, currentRound }) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
 
@@ -32,6 +32,8 @@ const UserInput = () => {
     data.then((value) => {
       console.log(value.data.includes('fMatch = true'));
     });
+    setCurrentRound(currentRound + 1);
+    setBoard('');
     inputEl.current.value = '';
   };
   return (

@@ -26,7 +26,10 @@ export default function App() {
         <h1>Round {currentRound}</h1>
       </div>
       <Timer setEndScreen={setEndScreen} />
-      <UserInput />
+      <UserInput
+        setCurrentRound={setCurrentRound}
+        currentRound={currentRound}
+      />
       <LetterGenerator currentWord={currentWord} />
     </div>
   );

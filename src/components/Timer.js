@@ -17,7 +17,7 @@ const Timer = ({ setEndScreen }) => {
 
   return (
     <div>
-      <div>Time Left: {currentTime} Seconds</div>
+      <div className="display-time">Time Left: {currentTime} Seconds</div>
     </div>
   );
 };
