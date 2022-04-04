@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = () => {
-  const [currentTime, setCurrentTime] = useState(60);
+const Timer = ({ setEndScreen }) => {
+  const [currentTime, setCurrentTime] = useState(5);
 
+  if (currentTime == 0) {
+    console.log('done');
+    setEndScreen(true);
+  }
   useEffect(() => {
     const updateTime = setInterval(function () {
       setCurrentTime(currentTime - 1);

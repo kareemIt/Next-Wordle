@@ -3,14 +3,14 @@ import { Alphabet } from '../WordBank';
 
 const LetterGenerator = (currentWord) => {
   const [randomUserLetters, setRandomUserLetters] = useState([
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
   ]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const LetterGenerator = (currentWord) => {
     <div>
       <div className="Game-board">
         {randomUserLetters.map((letters, index) => (
-          <div className="letter">{letters}</div>
+          <div className="letter">{letters.toUpperCase()}</div>
         ))}
       </div>
       <button onClick={randomizePosition}>randomize position</button>

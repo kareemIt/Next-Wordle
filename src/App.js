@@ -11,19 +11,19 @@ export default function App() {
   const words = WordBank;
   const [currentWord, setCurrentWord] = useState('');
   const [currentRound, setCurrentRound] = useState(1);
+  const [endScreen, setEndScreen] = useState(false);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * words.length);
     setCurrentWord(words[random]);
   }, []);
-
   return (
     <div>
       <Instructions />
-      <GameEnd />
+      <GameEnd endScreen={endScreen} />
       <h1>GAME NAME</h1>
       <h1>Round {currentRound}</h1>
-      <Timer />
+      <Timer setEndScreen={setEndScreen} />
       <UserInput currentWord={currentWord} />
       <LetterGenerator currentWord={currentWord} />
     </div>

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
-const GameEnd = () => {
+const GameEnd = ({ endScreen }) => {
   const [modal, setModal] = useState(true);
+  console.log(endScreen);
 
   const onClick = () => {
     setModal(!modal);
   };
 
   return (
-    <div className={modal ? 'modal' : 'modal-off'}>
+    <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-content">
         <p>GameEnd</p>
         <p>words</p>
