@@ -18,11 +18,13 @@ export default function App() {
     setCurrentWord(words[random]);
   }, []);
   return (
-    <div>
+    <div className="container">
       {/* <Instructions /> */}
       {/* <GameEnd endScreen={endScreen} /> */}
-      <h1>GAME NAME</h1>
-      <h1>Round {currentRound}</h1>
+      <div className="title">
+        <h1>GAME NAME</h1>
+        <h1>Round {currentRound}</h1>
+      </div>
       <Timer setEndScreen={setEndScreen} />
       <UserInput />
       <LetterGenerator currentWord={currentWord} />

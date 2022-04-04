@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const UserInput = () => {
-  const [board, setBoard] = useState(['', '', '', '', '', '']);
+  const [board, setBoard] = useState(['1', '2', '3', '4', '5', '6']);
   let inputEl;
 
   const handleKeyDown = (e) => {
@@ -30,7 +30,7 @@ const UserInput = () => {
     <div>
       <div className="Game-board">
         {board.map((letter, index) => (
-          <div className="letter">{letter}</div>
+          <div className="user-letters">{letter}</div>
         ))}
       </div>
       <form>
@@ -38,7 +38,7 @@ const UserInput = () => {
           onInput={handleKeyDown}
           type="text"
           maxLength="5"
-          className="userInput"
+          className="user-input"
         />
       </form>
     </div>

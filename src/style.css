@@ -4,9 +4,31 @@ p {
 }
 .Game-board {
   display: flex;
+  justify-content: center;
 }
 .letter {
+  border: solid grey 2px;
+  width: 25px;
+  height: 25px;
+  padding: 8px;
+  font-size: 30px;
+}
+.user-letters {
   border: solid red 2px;
+  /* background: red; */
+  width: 25px;
+  height: 25px;
+  padding: 8px;
+  font-size: 30px;
+}
+.container {
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .modal {
   position: fixed;
@@ -37,6 +59,6 @@ p {
 .close-button:hover {
   color: red;
 }
-.userInput {
+.user-input {
   /* opacity: 0; */
 }
