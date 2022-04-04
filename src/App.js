@@ -12,6 +12,7 @@ export default function App() {
   const [currentWord, setCurrentWord] = useState('');
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(60);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * words.length);
@@ -25,10 +26,16 @@ export default function App() {
         <h1>GAME NAME</h1>
         <h1>Round {currentRound}</h1>
       </div>
-      <Timer setEndScreen={setEndScreen} />
+      <Timer
+        currentTime={currentTime}
+        setCurrentTime={setCurrentTime}
+        setEndScreen={setEndScreen}
+      />
       <UserInput
         setCurrentRound={setCurrentRound}
         currentRound={currentRound}
+        currentTime={currentTime}
+        setCurrentTime={setCurrentTime}
       />
       <LetterGenerator currentWord={currentWord} />
     </div>

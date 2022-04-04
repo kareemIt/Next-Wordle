@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = ({ setEndScreen }) => {
-  const [currentTime, setCurrentTime] = useState(60);
-
+const Timer = ({ currentTime, setCurrentTime, setEndScreen }) => {
   if (currentTime == 0) {
     setEndScreen(true);
   }

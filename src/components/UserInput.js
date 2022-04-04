@@ -1,7 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
 
-const UserInput = ({ setCurrentRound, currentRound }) => {
+const UserInput = ({
+  setCurrentRound,
+  currentRound,
+  currentTime,
+  setCurrentTime,
+}) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
 
@@ -30,11 +35,16 @@ const UserInput = ({ setCurrentRound, currentRound }) => {
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
     data.then((value) => {
-      console.log(value.data.includes('fMatch = true'));
+      const validWord = value.data.includes('fMatch = true');
+      if (validWord) {
+        setCurrentRound(currentRound + 1);
+        setCurrentTime(currentTime + 10);
+      } else {
+        setCurrentTime(currentTime - 5);
+      }
+      setBoard('');
+      inputEl.current.value = '';
     });
-    setCurrentRound(currentRound + 1);
-    setBoard('');
-    inputEl.current.value = '';
   };
   return (
     <div>
