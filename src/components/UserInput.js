@@ -13,7 +13,10 @@ const UserInput = ({
   const inputEl = useRef(null);
 
   const handleKeyDown = (e) => {
-    if (word.includes([...e.currentTarget.value])) {
+    console.log(word);
+    console.log(word.includes([...e.currentTarget.value][board.length]));
+
+    if (!word.includes([...e.currentTarget.value][board.length])) {
       return;
     }
     setBoard(e.currentTarget.value);

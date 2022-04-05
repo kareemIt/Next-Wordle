@@ -5,9 +5,9 @@ const Timer = ({ currentTime, setCurrentTime, setEndScreen, startScreen }) => {
     setEndScreen(true);
   }
   useEffect(() => {
-    if (!startScreen) {
-      return;
-    }
+    // if (!startScreen) {
+    //   return;
+    // }
     const updateTime = setInterval(function () {
       setCurrentTime(currentTime - 1);
     }, 1000);
