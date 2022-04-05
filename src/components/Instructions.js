@@ -19,7 +19,7 @@ const Instructions = ({ setStartScreen }) => {
         </p>
         <p>
           There is a randomize posisiton button right below the 8 randomly
-          generated letters to help you move the letters arround{' '}
+          generated letters to help you move the letters around
         </p>
         <p>
           Each guess must be a valid five-letter word. Hit the enter button to
