@@ -13,10 +13,12 @@ const UserInput = ({
   const inputEl = useRef(null);
 
   const handleKeyDown = (e) => {
-    console.log(word);
-    console.log(word.includes([...e.currentTarget.value][board.length]));
+    if (e.currentTarget.value == '') {
+      //working on backSpacing
+    }
 
     if (!word.includes([...e.currentTarget.value][board.length])) {
+      //working making people only use the letters available
       return;
     }
     setBoard(e.currentTarget.value);
