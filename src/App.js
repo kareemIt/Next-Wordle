@@ -11,10 +11,9 @@ export default function App({ word }) {
   const [endScreen, setEndScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(60);
 
-  // const randomizePosition = () => {
-  //   const copyArray = [...randomUserLetters];
-  //   setRandomUserLetters(copyArray.sort(() => Math.random() - 0.5));
-  // };
+  const randomizePosition = () => {
+    word.sort(() => Math.random() - 0.5);
+  };
 
   return (
     <div className="container">
@@ -40,7 +39,7 @@ export default function App({ word }) {
           <div className="letter">{letters.toUpperCase()}</div>
         ))}
       </div>
-      <button>randomize position</button>
+      <button onClick={randomizePosition}>randomize position</button>
     </div>
   );
 }
