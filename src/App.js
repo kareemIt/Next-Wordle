@@ -17,7 +17,7 @@ export default function App({ word }) {
 
   return (
     <div className="container">
-      <Instructions setStartScreen={setStartScreen} />
+      {/* <Instructions setStartScreen={setStartScreen} /> */}
       {/* <GameEnd endScreen={endScreen} /> */}
       <div className="title">
         <h1>GAME NAME</h1>

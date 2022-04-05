@@ -4,7 +4,6 @@ const Timer = ({ currentTime, setCurrentTime, setEndScreen, startScreen }) => {
   if (currentTime <= 0) {
     setEndScreen(true);
   }
-  console.log(startScreen);
   useEffect(() => {
     if (!startScreen) {
       return;

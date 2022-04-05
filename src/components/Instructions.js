@@ -4,7 +4,6 @@ const Instructions = ({ setStartScreen }) => {
   const [modal, setModal] = useState(true);
 
   const onClick = () => {
-    console.log('hit');
     setStartScreen(true);
     setModal(!modal);
   };
