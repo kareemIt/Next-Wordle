@@ -9,6 +9,7 @@ export default function App({ word }) {
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(60);
+  const [startScreen, setStartScreen] = useState(false);
 
   const randomizePosition = () => {
     word.sort(() => Math.random() - 0.5);
@@ -16,7 +17,7 @@ export default function App({ word }) {
 
   return (
     <div className="container">
-      {/* <Instructions /> */}
+      <Instructions setStartScreen={setStartScreen} />
       {/* <GameEnd endScreen={endScreen} /> */}
       <div className="title">
         <h1>GAME NAME</h1>
@@ -26,6 +27,7 @@ export default function App({ word }) {
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
         setEndScreen={setEndScreen}
+        startScreen={startScreen}
       />
       <UserInput
         setCurrentRound={setCurrentRound}
