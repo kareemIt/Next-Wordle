@@ -1,5 +1,5 @@
-export const WordBank = ['which', 'there', 'their', 'about', 'would'];
-export const Alphabet = [
+export const words = ['which', 'there', 'their', 'about', 'would'];
+export const alphabet = [
   'a',
   'b',
   'c',

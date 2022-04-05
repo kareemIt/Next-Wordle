@@ -5,19 +5,17 @@ import Instructions from './components/Instructions';
 import GameEnd from './components/GameEnd';
 import LetterGenerator from './components/LetterGenerator';
 import UserInput from './components/UserInput';
-import { WordBank } from './WordBank.js';
 
-export default function App() {
-  const words = WordBank;
-  const [currentWord, setCurrentWord] = useState('');
+export default function App({ word }) {
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(60);
 
-  useEffect(() => {
-    const random = Math.floor(Math.random() * words.length);
-    setCurrentWord(words[random]);
-  }, []);
+  // const randomizePosition = () => {
+  //   const copyArray = [...randomUserLetters];
+  //   setRandomUserLetters(copyArray.sort(() => Math.random() - 0.5));
+  // };
+
   return (
     <div className="container">
       {/* <Instructions /> */}
@@ -37,7 +35,12 @@ export default function App() {
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
       />
-      <LetterGenerator currentWord={currentWord} />
+      <div className="Game-board">
+        {[...word].map((letters, index) => (
+          <div className="letter">{letters.toUpperCase()}</div>
+        ))}
+      </div>
+      <button>randomize position</button>
     </div>
   );
 }
