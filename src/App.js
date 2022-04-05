@@ -3,7 +3,6 @@ import './style.css';
 import Timer from './components/Timer';
 import Instructions from './components/Instructions';
 import GameEnd from './components/GameEnd';
-import LetterGenerator from './components/LetterGenerator';
 import UserInput from './components/UserInput';
 
 export default function App({ word }) {
@@ -33,9 +32,10 @@ export default function App({ word }) {
         currentRound={currentRound}
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
+        word={word}
       />
       <div className="Game-board">
-        {[...word].map((letters, index) => (
+        {[...word].map((letters) => (
           <div className="letter">{letters.toUpperCase()}</div>
         ))}
       </div>

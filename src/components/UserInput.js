@@ -1,16 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
+import { getRandomWord } from '../utils/word';
 
 const UserInput = ({
   setCurrentRound,
   currentRound,
   currentTime,
   setCurrentTime,
+  word,
 }) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
 
   const handleKeyDown = (e) => {
+    if (word.includes([...e.currentTarget.value])) {
+      return;
+    }
     setBoard(e.currentTarget.value);
   };
 
@@ -50,7 +55,7 @@ const UserInput = ({
     <div>
       <div className="Game-board">
         {[...board.padEnd(5, ' ')].map((letter, index) => (
-          <div className="user-letters">{letter}</div>
+          <div className="user-letters">{letter.toUpperCase()}</div>
         ))}
       </div>
       <form onSubmit={handleSubmit}>
