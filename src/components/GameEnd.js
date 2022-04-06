@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const GameEnd = ({ endScreen }) => {
+const GameEnd = ({ endScreen, results }) => {
   const [modal, setModal] = useState(true);
 
   const onClick = () => {
@@ -14,7 +14,11 @@ const GameEnd = ({ endScreen }) => {
         <p>Round </p>
         <p>current word</p>
         <p>Statisitcs:</p>
-        <p>round,word,letters</p>
+        {results.map((row, index) => {
+          <div>
+            <p>{row}</p>
+          </div>;
+        })}
         <p>Time left till next run</p>
         <button className="close-button" onClick={onClick}>
           Share
