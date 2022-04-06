@@ -24,7 +24,9 @@ const UserInput = ({
       setBoard(substring);
       setValue(substring);
     }
-    if (!word.includes([...e.currentTarget.value][board.length])) {
+    if (
+      !word.includes([...e.currentTarget.value][board.length].toLowerCase())
+    ) {
       // setValue(e.currentTarget.value);
       return;
     }
