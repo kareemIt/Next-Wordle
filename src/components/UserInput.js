@@ -8,8 +8,10 @@ const UserInput = ({
   currentTime,
   setCurrentTime,
   word,
+  setResults,
 }) => {
   const [board, setBoard] = useState('');
+  const copyArry = [];
   const inputEl = useRef(null);
 
   const handleKeyDown = (e) => {
@@ -45,10 +47,14 @@ const UserInput = ({
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
     data.then((value) => {
-      const validWord = value.data.includes('fMatch = true');
+      const validWord = value.data.includes('dMatch = true');
       if (validWord) {
         setCurrentRound(currentRound + 1);
         setCurrentTime(currentTime + 10);
+        copyArry.push(
+          'Round:' + currentRound + ',word:' + board + ',letters:' + word
+        );
+        setResults(copyArry);
       } else {
         setCurrentTime(currentTime - 5);
       }

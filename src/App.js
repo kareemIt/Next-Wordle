@@ -10,6 +10,7 @@ export default function App({ word }) {
   const [endScreen, setEndScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(60);
   const [startScreen, setStartScreen] = useState(false);
+  const [results, setResults] = useState([]);
 
   const randomizePosition = () => {
     word.sort(() => Math.random() - 0.5);
@@ -18,7 +19,7 @@ export default function App({ word }) {
   return (
     <div className="container">
       {/* <Instructions setStartScreen={setStartScreen} /> */}
-      {/* <GameEnd endScreen={endScreen} /> */}
+      {/* <GameEnd endScreen={endScreen}  results={results}/> */}
       <div className="title">
         <h1>GAME NAME</h1>
         <h1>Round {currentRound}</h1>
@@ -35,6 +36,7 @@ export default function App({ word }) {
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
         word={word}
+        setResults={setResults}
       />
       <div className="Game-board">
         {[...word].map((letters) => (
