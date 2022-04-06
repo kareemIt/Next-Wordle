@@ -13,15 +13,28 @@ const UserInput = ({
   const [board, setBoard] = useState('');
   const copyArry = [];
   const inputEl = useRef(null);
+  const [value, setValue] = useState('');
 
   const handleKeyDown = (e) => {
-    console.log(e);
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      setBoard(inputEl.current.value);
+      setBoard(
+        e.currentTarget.value.substring(
+          e.currentTarget.value[board.length] - 1,
+          e.currentTarget.value[board.length]
+        )
+      );
+      setValue(
+        e.currentTarget.value.substring(
+          e.currentTarget.value[board.length] - 1,
+          e.currentTarget.value[board.length]
+        )
+      );
     }
     if (!word.includes([...e.currentTarget.value][board.length])) {
+      // setValue(e.currentTarget.value);
       return;
     }
+    setValue(e.currentTarget.value);
     setBoard(e.currentTarget.value);
     setBoard(inputEl.current.value);
   };
@@ -54,6 +67,7 @@ const UserInput = ({
         copyArry.push(
           'Round:' + currentRound + ',word:' + board + ',letters:' + word
         );
+        console.log(copyArry);
         setResults(copyArry);
       } else {
         setCurrentTime(currentTime - 5);
@@ -73,6 +87,7 @@ const UserInput = ({
         <input
           onChange={handleKeyDown}
           ref={inputEl}
+          value={value}
           type="text"
           maxLength="5"
           className="user-input"
