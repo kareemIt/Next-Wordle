@@ -23,16 +23,15 @@ const UserInput = ({
       );
       setBoard(substring);
       setValue(substring);
+      return;
     }
     if (
       !word.includes([...e.currentTarget.value][board.length].toLowerCase())
     ) {
-      // setValue(e.currentTarget.value);
       return;
     }
     setValue(e.currentTarget.value);
     setBoard(e.currentTarget.value);
-    setBoard(inputEl.current.value);
   };
 
   useEffect(() => {
