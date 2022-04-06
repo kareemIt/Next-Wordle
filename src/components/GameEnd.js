@@ -11,9 +11,13 @@ const GameEnd = ({ endScreen }) => {
     <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-content">
         <p>GameEnd</p>
-        <p>words</p>
+        <p>Round </p>
+        <p>current word</p>
+        <p>Statisitcs:</p>
+        <p>round,word,letters</p>
+        <p>Time left till next run</p>
         <button className="close-button" onClick={onClick}>
-          +
+          Share
         </button>
       </div>
     </div>
