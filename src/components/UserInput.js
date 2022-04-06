@@ -17,18 +17,12 @@ const UserInput = ({
 
   const handleKeyDown = (e) => {
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      setBoard(
-        e.currentTarget.value.substring(
-          e.currentTarget.value[board.length] - 1,
-          e.currentTarget.value[board.length]
-        )
+      let substring = e.currentTarget.value.substring(
+        e.currentTarget.value[board.length] - 1,
+        e.currentTarget.value[board.length]
       );
-      setValue(
-        e.currentTarget.value.substring(
-          e.currentTarget.value[board.length] - 1,
-          e.currentTarget.value[board.length]
-        )
-      );
+      setBoard(substring);
+      setValue(substring);
     }
     if (!word.includes([...e.currentTarget.value][board.length])) {
       // setValue(e.currentTarget.value);
