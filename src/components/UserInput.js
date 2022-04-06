@@ -13,15 +13,15 @@ const UserInput = ({
   const inputEl = useRef(null);
 
   const handleKeyDown = (e) => {
-    if (e.currentTarget.value == '') {
-      //working on backSpacing
+    console.log(e);
+    if (e.nativeEvent.inputType == 'deleteContentBackward') {
+      setBoard(inputEl.current.value);
     }
-
     if (!word.includes([...e.currentTarget.value][board.length])) {
-      //working making people only use the letters available
       return;
     }
     setBoard(e.currentTarget.value);
+    setBoard(inputEl.current.value);
   };
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const UserInput = ({
       </div>
       <form onSubmit={handleSubmit}>
         <input
-          onInput={handleKeyDown}
+          onChange={handleKeyDown}
           ref={inputEl}
           type="text"
           maxLength="5"
