@@ -64,6 +64,7 @@ const UserInput = ({
         );
         console.log(copyArry);
         setResults(copyArry);
+        setValue('');
       } else {
         setCurrentTime(currentTime - 5);
       }

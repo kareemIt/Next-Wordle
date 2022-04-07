@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import { getRandomWord } from './utils/word';
+import Wrapper from './components/Wrapper';
 
 ReactDOM.render(
-  <App word={getRandomWord()} />,
-  document.getElementById('root')
+  // <Wrapper>
+    <App word={getRandomWord()} />, document.getElementById('root')
 );
