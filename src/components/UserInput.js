@@ -7,8 +7,9 @@ const UserInput = ({
   currentRound,
   currentTime,
   setCurrentTime,
-  word,
+  currentWord,
   setResults,
+  setNextRound,
 }) => {
   const [board, setBoard] = useState('');
   const copyArry = [];
@@ -26,7 +27,9 @@ const UserInput = ({
       return;
     }
     if (
-      !word.includes([...e.currentTarget.value][board.length].toLowerCase())
+      !currentWord.includes(
+        [...e.currentTarget.value][board.length].toLowerCase()
+      )
     ) {
       return;
     }
@@ -60,11 +63,11 @@ const UserInput = ({
         setCurrentRound(currentRound + 1);
         setCurrentTime(currentTime + 10);
         copyArry.push(
-          'Round:' + currentRound + ',word:' + board + ',letters:' + word
+          'Round:' + currentRound + ',word:' + board + ',letters:' + currentWord
         );
-        console.log(copyArry);
         setResults(copyArry);
         setValue('');
+        setNextRound(true);
       } else {
         setCurrentTime(currentTime - 5);
         setValue('');

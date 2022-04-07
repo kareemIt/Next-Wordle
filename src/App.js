@@ -4,22 +4,33 @@ import Timer from './components/Timer';
 import Instructions from './components/Instructions';
 import GameEnd from './components/GameEnd';
 import UserInput from './components/UserInput';
+import { getRandomWord } from './utils/word';
 
-export default function App({ word }) {
+export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(60);
+  const [currentTime, setCurrentTime] = useState(3);
   const [startScreen, setStartScreen] = useState(false);
   const [results, setResults] = useState([]);
+  const [currentWord, setCurrentWord] = useState(getRandomWord());
+  const [nextRound, setNextRound] = useState(false);
 
   const randomizePosition = () => {
-    word.sort(() => Math.random() - 0.5);
+    currentWord.sort(() => Math.random() - 0.5);
   };
+  useEffect(() => {
+    setCurrentWord(getRandomWord());
+    setNextRound(false);
+  }, [nextRound]);
 
   return (
     <div className="container">
-      {/* <Instructions setStartScreen={setStartScreen} /> */}
-      {/* <GameEnd endScreen={endScreen} results={results} /> */}
+      <Instructions setStartScreen={setStartScreen} />
+      <GameEnd
+        endScreen={endScreen}
+        results={results}
+        currentRound={currentRound}
+      />
       <div className="title">
         <h1>GAME NAME</h1>
         <h1>Round {currentRound}</h1>
@@ -35,11 +46,12 @@ export default function App({ word }) {
         currentRound={currentRound}
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
-        word={word}
+        currentWord={currentWord}
         setResults={setResults}
+        setNextRound={setNextRound}
       />
       <div className="Game-board">
-        {[...word].map((letters) => (
+        {[...currentWord].map((letters) => (
           <div className="letter">{letters.toUpperCase()}</div>
         ))}
       </div>

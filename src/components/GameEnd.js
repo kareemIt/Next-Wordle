@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const GameEnd = ({ endScreen, results }) => {
+const GameEnd = ({ endScreen, results, currentRound }) => {
   const [modal, setModal] = useState(true);
 
   const onClick = () => {
@@ -10,9 +10,8 @@ const GameEnd = ({ endScreen, results }) => {
   return (
     <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-content">
-        <p>GameEnd</p>
-        <p>Round </p>
-        <p>current word</p>
+        <p>Game Over</p>
+        <p>Round: {currentRound}</p>
         <p>Statisitcs:</p>
         {results.map((row, index) => {
           <div>
