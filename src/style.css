@@ -38,21 +38,28 @@ body {
 }
 .modal {
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
+  padding-top: 20px;
   left: 0;
   top: 0;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
   background-color: #fefefe;
   color: #000;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
-  width: 80%;
+  width: 80vw;
+}
+.modal-game-end {
+  background-color: #fefefe;
+  color: #000;
+  margin: 38px auto;
+  padding: 40px;
+  border: 1px solid #888;
+  width: 80vw;
 }
 .close-button {
   background: transparent;
