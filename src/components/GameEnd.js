@@ -20,9 +20,7 @@ const GameEnd = ({ endScreen, results }) => {
           </div>;
         })}
         <p>Time left till next run</p>
-        <button className="close-button" onClick={onClick}>
-          Share
-        </button>
+        <button onClick={onClick}>Share</button>
       </div>
     </div>
   );

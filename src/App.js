@@ -19,7 +19,7 @@ export default function App({ word }) {
   return (
     <div className="container">
       {/* <Instructions setStartScreen={setStartScreen} /> */}
-      {/* <GameEnd endScreen={endScreen}  results={results}/> */}
+      {/* <GameEnd endScreen={endScreen} results={results} /> */}
       <div className="title">
         <h1>GAME NAME</h1>
         <h1>Round {currentRound}</h1>

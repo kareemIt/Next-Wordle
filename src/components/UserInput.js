@@ -67,6 +67,7 @@ const UserInput = ({
         setValue('');
       } else {
         setCurrentTime(currentTime - 5);
+        setValue('');
       }
       setBoard('');
       inputEl.current.value = '';
