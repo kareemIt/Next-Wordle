@@ -51,6 +51,7 @@ body {
   margin: auto;
   padding: 10px;
   border: 1px solid #888;
+  border-radius: 12px;
   width: 80vw;
 }
 .modal-game-end {
@@ -59,6 +60,7 @@ body {
   margin: 38px auto;
   padding: 40px;
   border: 1px solid #888;
+  border-radius: 12px;
   width: 80vw;
 }
 .close-button {
@@ -77,4 +79,8 @@ body {
   width: 0px;
   padding-bottom: 12px;
   margin-right: 80px;
+}
+ul {
+  line-height: 180%;
+  text-align: left;
 }
