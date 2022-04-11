@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
+import { getMapWord } from '../utils/word';
 
 const UserInput = ({
   setCurrentRound,
@@ -14,12 +15,14 @@ const UserInput = ({
   const copyArry = [];
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
+  const wordTracker = getMapWord(currentRound);
 
   const handleKeyDown = (e) => {
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      let substring = e.currentTarget.value.substring(
-        e.currentTarget.value[board.length] - 1,
-        e.currentTarget.value[board.length]
+      let input = e.currentTarget.value;
+      let substring = input.substring(
+        input[board.length] - 1,
+        input[board.length]
       );
       setBoard(substring);
       setValue(substring);

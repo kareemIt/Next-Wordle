@@ -4,7 +4,7 @@ import Timer from './components/Timer';
 import Instructions from './components/Instructions';
 import GameEnd from './components/GameEnd';
 import UserInput from './components/UserInput';
-import { getRandomWord, getMapWord } from './utils/word';
+import { getRandomWord } from './utils/word';
 
 export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
@@ -22,7 +22,6 @@ export default function App() {
     setCurrentWord(getRandomWord());
     setNextRound(false);
   }, [nextRound]);
-  console.log(getMapWord(currentWord));
 
   return (
     <div className="container">
