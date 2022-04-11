@@ -12,7 +12,7 @@ export default function App() {
   const [currentTime, setCurrentTime] = useState(30);
   const [startScreen, setStartScreen] = useState(false);
   const [results, setResults] = useState([]);
-  const [currentWord, setCurrentWord] = useState(getRandomWord());
+  const [currentWord, setCurrentWord] = useState('');
   const [nextRound, setNextRound] = useState(false);
 
   const randomizePosition = () => {
