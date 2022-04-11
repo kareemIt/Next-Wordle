@@ -10,6 +10,18 @@ export const getRandomWord = () => {
   return finalArr;
 };
 
+export const getMapWord = (array) => {
+  let wordMap = new Map();
+  for (let i = 0; i < array.length; i++) {
+    if (!wordMap.has(array[i])) {
+      wordMap.set(array[i], 1);
+    } else {
+      wordMap.set(array[i], wordMap.get(array[i]) + 1);
+    }
+  }
+  return wordMap;
+};
+
 export const randomizePosition = (array) => {
   var randomArray = array[Math.floor(Math.random() * array.length)];
   return randomArray;

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
-import { getRandomWord } from '../utils/word';
 
 const UserInput = ({
   setCurrentRound,
