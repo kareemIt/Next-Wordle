@@ -9,7 +9,7 @@ import { getRandomWord } from './utils/word';
 export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(3);
+  const [currentTime, setCurrentTime] = useState(30);
   const [startScreen, setStartScreen] = useState(false);
   const [results, setResults] = useState([]);
   const [currentWord, setCurrentWord] = useState(getRandomWord());

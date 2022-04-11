@@ -1,4 +1,4 @@
-export const words = ['which', 'there', 'their', 'about', 'would'];
+export const words = ['crane', 'audio', 'their', 'about', 'would'];
 export const alphabet = [
   'a',
   'b',
