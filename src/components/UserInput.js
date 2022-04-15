@@ -30,7 +30,7 @@ const UserInput = ({
       setValue(substring);
       return;
     }
-    if (wordTracker.has(input) && ordTracker.get(input) != 0) {
+    if (wordTracker.has(input) && wordTracker.get(input) != 0) {
       wordTracker.set(input, wordTracker.get(input) - 1);
     }
     if (!currentWord.includes([...input][board.length].toLowerCase())) {
