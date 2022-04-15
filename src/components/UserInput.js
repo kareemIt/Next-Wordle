@@ -15,7 +15,7 @@ const UserInput = ({
   const copyArry = [];
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
-  const wordTracker = getMapWord(currentRound);
+  const wordTracker = getMapWord(currentWord);
 
   const handleKeyDown = (e) => {
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
