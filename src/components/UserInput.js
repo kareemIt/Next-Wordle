@@ -16,6 +16,7 @@ const UserInput = ({
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
   const wordTracker = getMapWord(currentWord);
+  console.log(wordTracker);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
@@ -24,6 +25,9 @@ const UserInput = ({
         input[board.length] - 1,
         input[board.length]
       );
+      if (wordTracker.has(input)) {
+        wordTracker.set(input, wordTracker.get(input) + 1);
+      }
       setBoard(substring);
       setValue(substring);
       return;
@@ -32,10 +36,12 @@ const UserInput = ({
       wordTracker.has(input[input.length - 1]) &&
       wordTracker.get(input) != 0
     ) {
-      console.log('Hit');
       wordTracker.set(input, wordTracker.get(input) - 1);
     }
     if (!currentWord.includes([...input][board.length].toLowerCase())) {
+      return;
+    }
+    if (!wordTracker.has(input)) {
       return;
     }
     setValue(input);
