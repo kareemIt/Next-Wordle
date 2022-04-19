@@ -32,12 +32,15 @@ const UserInput = ({
     if (wordTracker.has(substring) && wordTracker.get(substring) != 0) {
       wordTracker.set(substring, wordTracker.get(substring) - 1);
     }
-    if (!currentWord.includes([...input][board.length].toLowerCase())) {
+    if (
+      !currentWord.includes([...input][board.length].toLowerCase()) ||
+      !wordTracker.has(substring)
+    ) {
       return;
     }
-    if (!wordTracker.has(substring)) {
-      return;
-    }
+    // if (!wordTracker.has(substring)) {
+    //   return;
+    // }
     setValue(input);
     setBoard(input);
   };
