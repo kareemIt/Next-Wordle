@@ -20,7 +20,7 @@ const UserInput = ({
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
     let substring = input[input.length - 1];
-    console.log(substring);
+    console.log(wordTracker);
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
       if (wordTracker.has(input)) {
         wordTracker.set(input, wordTracker.get(input) + 1);
@@ -35,9 +35,9 @@ const UserInput = ({
     if (!currentWord.includes([...input][board.length].toLowerCase())) {
       return;
     }
-    // if (!wordTracker.has(substring)) {
-    //   return;
-    // }
+    if (!wordTracker.has(substring)) {
+      return;
+    }
     setValue(input);
     setBoard(input);
   };
