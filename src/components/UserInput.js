@@ -38,9 +38,6 @@ const UserInput = ({
     ) {
       return;
     }
-    // if (!wordTracker.has(substring)) {
-    //   return;
-    // }
     setValue(input);
     setBoard(input);
   };
