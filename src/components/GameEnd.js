@@ -16,7 +16,7 @@ const GameEnd = ({ endScreen, results, currentRound }) => {
         <p>Statisitcs:</p>
         {results.map((row, index) => {
           <div>
-            <p>{row}</p>
+            <p>a{row}</p>
           </div>;
         })}
         <p>Time left till next run</p>

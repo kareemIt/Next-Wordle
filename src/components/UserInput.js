@@ -11,11 +11,13 @@ const UserInput = ({
   setResults,
   setNextRound,
   wordTracker,
+  setWordTracker,
 }) => {
   const [board, setBoard] = useState('');
   const copyArry = [''];
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
+  console.log(wordTracker);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
@@ -83,6 +85,7 @@ const UserInput = ({
       } else {
         setCurrentTime(currentTime - 5);
         setValue('');
+        setWordTracker(getMapWord(currentWord));
       }
       setBoard('');
       inputEl.current.value = '';
