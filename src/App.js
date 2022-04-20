@@ -21,11 +21,12 @@ export default function App() {
   };
   useEffect(() => {
     setCurrentWord(getRandomWord());
-    setWordTracker(getMapWord(currentWord));
     setNextRound(false);
-    console.log(wordTracker);
   }, [nextRound]);
 
+  useEffect(() => {
+    setWordTracker(getMapWord(currentWord));
+  }, [currentWord]);
   return (
     <div className="container">
       <Instructions setStartScreen={setStartScreen} />
