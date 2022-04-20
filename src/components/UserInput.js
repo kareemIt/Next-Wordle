@@ -10,12 +10,12 @@ const UserInput = ({
   currentWord,
   setResults,
   setNextRound,
+  wordTracker,
 }) => {
   const [board, setBoard] = useState('');
   const copyArry = [];
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
-  const wordTracker = getMapWord(currentWord);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
