@@ -4,7 +4,7 @@ import Timer from './components/Timer';
 import Instructions from './components/Instructions';
 import GameEnd from './components/GameEnd';
 import UserInput from './components/UserInput';
-import { getRandomWord } from './utils/word';
+import { getRandomWord, getMapWord } from './utils/word';
 
 export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
@@ -14,13 +14,16 @@ export default function App() {
   const [results, setResults] = useState([]);
   const [currentWord, setCurrentWord] = useState('');
   const [nextRound, setNextRound] = useState(false);
+  const [wordTracker, setWordTracker] = useState();
 
   const randomizePosition = () => {
     currentWord.sort(() => Math.random() - 0.5);
   };
   useEffect(() => {
     setCurrentWord(getRandomWord());
+    setWordTracker(getMapWord(currentWord));
     setNextRound(false);
+    console.log(wordTracker);
   }, [nextRound]);
 
   return (
