@@ -29,6 +29,9 @@ const UserInput = ({
       setValue(substring);
       return;
     }
+    if (wordTracker.get(substring) == 0) {
+      return;
+    }
     if (wordTracker.has(substring) && wordTracker.get(substring) != 0) {
       wordTracker.set(substring, wordTracker.get(substring) - 1);
     }
