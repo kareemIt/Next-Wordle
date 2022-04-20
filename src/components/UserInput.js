@@ -13,7 +13,7 @@ const UserInput = ({
   wordTracker,
 }) => {
   const [board, setBoard] = useState('');
-  const copyArry = [];
+  const copyArry = [''];
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
 
@@ -28,7 +28,6 @@ const UserInput = ({
         );
       }
       let substring = input.substring(0, input.length);
-      console.log(wordTracker);
       setBoard(substring);
       setValue(substring);
       return;
@@ -75,8 +74,9 @@ const UserInput = ({
         setCurrentRound(currentRound + 1);
         setCurrentTime(currentTime + 10);
         copyArry.push(
-          'Round:' + currentRound + ',word:' + board + ',letters:' + currentWord
+          'Round:' + currentRound + ',Word:' + board + ',Letters:' + currentWord
         );
+        console.log(copyArry);
         setResults(copyArry);
         setValue('');
         setNextRound(true);
