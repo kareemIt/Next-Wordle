@@ -19,30 +19,34 @@ const UserInput = ({
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
-    let substring = input[input.length - 1];
-    console.log(wordTracker);
+    let charInput = input[input.length - 1];
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      if (wordTracker.has(input)) {
-        wordTracker.set(input, wordTracker.get(input) + 1);
+      if (wordTracker.has(value[value.length - 1])) {
+        wordTracker.set(
+          value[value.length - 1],
+          wordTracker.get(value[value.length - 1]) + 1
+        );
       }
+      let substring = input.substring(0, input.length);
+      console.log(wordTracker);
       setBoard(substring);
       setValue(substring);
       return;
     }
-    if (wordTracker.get(substring) == 0) {
+    if (wordTracker.get(charInput) == 0) {
       return;
     }
-    if (wordTracker.has(substring) && wordTracker.get(substring) != 0) {
-      wordTracker.set(substring, wordTracker.get(substring) - 1);
+    if (wordTracker.has(charInput) && wordTracker.get(charInput) != 0) {
+      wordTracker.set(charInput, wordTracker.get(charInput) - 1);
     }
     if (
       !currentWord.includes([...input][board.length].toLowerCase()) ||
-      !wordTracker.has(substring)
+      !wordTracker.has(charInput)
     ) {
       return;
     }
-    setValue(input);
     setBoard(input);
+    setValue(input);
   };
 
   useEffect(() => {
