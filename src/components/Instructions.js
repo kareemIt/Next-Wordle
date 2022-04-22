@@ -31,11 +31,9 @@ const Instructions = ({ setStartScreen }) => {
             gain 10 seconds on the timer
           </li>
           <li>
-          If you put in a word that isn't real
-            then you will lose 5 seconds.
-            </li>
+            If you put in a word that isn't real then you will lose 5 seconds.
+          </li>
         </ul>
-        <p>A new Game will be available each day!</p>
         <button className="close-button" onClick={onClick}>
           Start
         </button>
