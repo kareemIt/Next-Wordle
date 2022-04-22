@@ -16,7 +16,6 @@ const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
             <div>{round}</div>
           ))}
         </div>
-        <p>Time left till next run</p>
         <button onClick={reStart}>Restart</button>
       </div>
     </div>
