@@ -15,10 +15,22 @@ export default function App() {
   const [currentWord, setCurrentWord] = useState('');
   const [nextRound, setNextRound] = useState(false);
   const [wordTracker, setWordTracker] = useState();
+  const [restart, setRestart] = useState(false);
 
   const randomizePosition = () => {
     currentWord.sort(() => Math.random() - 0.5);
   };
+  useEffect(() => {
+    setCurrentRound(1);
+    setEndScreen(false);
+    setCurrentTime(10);
+    setResults([]);
+    setCurrentWord(getRandomWord());
+    setCurrentRound(false);
+    setWordTracker();
+    setRestart(false);
+  }, [restart]);
+
   useEffect(() => {
     setCurrentWord(getRandomWord());
     setNextRound(false);
@@ -34,6 +46,7 @@ export default function App() {
         endScreen={endScreen}
         results={results}
         currentRound={currentRound}
+        setRestart={setRestart}
       />
       <div className="title">
         <h1>GAME NAME</h1>
@@ -56,6 +69,7 @@ export default function App() {
         wordTracker={wordTracker}
         setWordTracker={setWordTracker}
         results={results}
+        restart={restart}
       />
       <div className="Game-board">
         {[...currentWord].map((letters) => (

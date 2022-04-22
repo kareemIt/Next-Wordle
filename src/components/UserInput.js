@@ -13,10 +13,16 @@ const UserInput = ({
   wordTracker,
   setWordTracker,
   results,
+  restart,
 }) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setBoard('');
+    setValue('');
+  }, [restart]);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;

@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 
-const GameEnd = ({ endScreen, results, currentRound }) => {
-  console.log(results);
-
-  const onClick = () => {
-    console.log('hit');
-    navigator.clipboard.writeText('hi');
+const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
+  const reStart = () => {
+    setRestart(true);
   };
 
   return (
@@ -20,7 +17,7 @@ const GameEnd = ({ endScreen, results, currentRound }) => {
           ))}
         </div>
         <p>Time left till next run</p>
-        <button onClick={onClick}>Share</button>
+        <button onClick={reStart}>Restart</button>
       </div>
     </div>
   );
