@@ -15,7 +15,7 @@ const Instructions = ({ setStartScreen }) => {
         <p>Guess the word before you run out of time.</p>
         <ul>
           <li>
-            There will be 8 randomly generatored letters that you have to use to
+            There will be 8 randomly generated letters that you have to use to
             form a five letter-word.
           </li>
           <li>
