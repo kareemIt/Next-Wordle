@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const GameEnd = ({ endScreen, results, currentRound }) => {
   const [modal, setModal] = useState(true);
-  // console.log(results);
+  console.log(results);
 
   const onClick = () => {
     setModal(!modal);
