@@ -73,7 +73,7 @@ const UserInput = ({
       const validWord = value.data.includes('dMatch = true');
       if (validWord) {
         setCurrentRound(currentRound + 1);
-        setCurrentTime(currentTime + 10);
+        // setCurrentTime(currentTime + 10);
         setResults([
           ...results,
           'Round:' +

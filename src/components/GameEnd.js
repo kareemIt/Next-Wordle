@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 const GameEnd = ({ endScreen, results, currentRound }) => {
-  const [modal, setModal] = useState(true);
   console.log(results);
 
   const onClick = () => {
-    setModal(!modal);
+    console.log('hit');
+    navigator.clipboard.writeText('hi');
   };
 
   return (
@@ -14,11 +14,11 @@ const GameEnd = ({ endScreen, results, currentRound }) => {
         <p>Game Over</p>
         <p>Round:{currentRound}</p>
         <p>Statisitcs:</p>
-        {results.map((row, index) => {
-          <div>
-            <p>a{row}</p>
-          </div>;
-        })}
+        <div className="results">
+          {results.map((round, index) => (
+            <div>{round}</div>
+          ))}
+        </div>
         <p>Time left till next run</p>
         <button onClick={onClick}>Share</button>
       </div>
