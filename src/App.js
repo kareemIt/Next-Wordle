@@ -26,7 +26,7 @@ export default function App() {
     setCurrentTime(10);
     setResults([]);
     setCurrentWord(getRandomWord());
-    setCurrentRound(false);
+    setNextRound(false);
     setWordTracker();
     setRestart(false);
   }, [restart]);

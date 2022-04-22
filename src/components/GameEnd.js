@@ -9,7 +9,7 @@ const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
     <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-game-end">
         <p>Game Over</p>
-        <p>Round:{currentRound}</p>
+        <p>Round:{currentRound - 1}</p>
         <p>Statisitcs:</p>
         <div className="results">
           {results.map((round, index) => (
