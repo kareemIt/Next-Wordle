@@ -17,7 +17,9 @@ const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
           ))}
         </div>
         <br />
-        <button onClick={reStart}>Restart</button>
+        <button onClick={reStart} className="close-button">
+          Restart
+        </button>
       </div>
     </div>
   );

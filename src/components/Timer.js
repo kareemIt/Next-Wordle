@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const Timer = ({ currentTime, setCurrentTime, setEndScreen, startScreen }) => {
   if (currentTime <= 0) {

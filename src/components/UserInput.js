@@ -26,7 +26,6 @@ const UserInput = ({
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
-    console.log(input);
     let charInput = input[input.length - 1];
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
       if (wordTracker.has(value[value.length - 1])) {
