@@ -63,6 +63,13 @@ body {
   border-radius: 12px;
   width: 80vw;
 }
+.results {
+  overflow: hidden;
+  overflow-x: auto;
+  height: 350px;
+  border: 2px solid black;
+  text-align: left;
+}
 .close-button {
   background: transparent;
   border: none;
