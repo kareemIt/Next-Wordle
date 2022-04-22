@@ -55,6 +55,7 @@ export default function App() {
         setNextRound={setNextRound}
         wordTracker={wordTracker}
         setWordTracker={setWordTracker}
+        results={results}
       />
       <div className="Game-board">
         {[...currentWord].map((letters) => (

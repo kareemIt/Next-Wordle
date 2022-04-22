@@ -12,9 +12,9 @@ const UserInput = ({
   setNextRound,
   wordTracker,
   setWordTracker,
+  results,
 }) => {
   const [board, setBoard] = useState('');
-  const [copyArray, setCopyArray] = useState([]);
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
 
@@ -74,8 +74,8 @@ const UserInput = ({
       if (validWord) {
         setCurrentRound(currentRound + 1);
         setCurrentTime(currentTime + 10);
-        setCopyArray([
-          ...copyArray,
+        setResults([
+          ...results,
           'Round:' +
             currentRound +
             ',Word:' +
@@ -83,8 +83,6 @@ const UserInput = ({
             ',Letters:' +
             currentWord,
         ]);
-        console.log(copyArray);
-        setResults(copyArray);
         setValue('');
         setNextRound(true);
       } else {
