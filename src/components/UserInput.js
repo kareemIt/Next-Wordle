@@ -88,7 +88,7 @@ const UserInput = ({
             ',Word:' +
             board +
             ',Letters:' +
-            [...currentWord].toUpperCase(),
+            currentWord,
         ]);
         setValue('');
         setNextRound(true);
