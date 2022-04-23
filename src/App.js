@@ -6,6 +6,7 @@ import GameEnd from './components/GameEnd';
 import UserInput from './components/UserInput';
 import { getRandomWord, getMapWord } from './utils/word';
 
+
 export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
   const [endScreen, setEndScreen] = useState(false);
@@ -49,7 +50,7 @@ export default function App() {
         setRestart={setRestart}
       />
       <div className="title">
-        <h1>GAME NAME</h1>
+        <h1>Wordom</h1>
         <h1>Round {currentRound}</h1>
       </div>
       <Timer
