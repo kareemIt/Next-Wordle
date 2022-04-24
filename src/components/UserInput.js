@@ -76,9 +76,7 @@ const UserInput = ({
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
     data.then((value) => {
-      const validWord =
-        value.data.includes('dMatch = true') &&
-        value.data.includes('fMatch = true');
+      const validWord = value.data.includes('dMatch = true');
       if (validWord) {
         setCurrentRound(currentRound + 1);
         setCurrentTime(currentTime + 10);
