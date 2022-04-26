@@ -64,7 +64,7 @@ body {
   width: 80vw;
 }
 .results {
-  overflow: hidden;
+  overflow: scroll;
   overflow-x: auto;
   height: 150px;
   border: 2px solid black;
