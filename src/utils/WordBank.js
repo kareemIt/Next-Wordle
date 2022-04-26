@@ -5,7 +5,7 @@ export const words = [
   'about',
   'would',
   'swing',
-  'Begin',
+  'begin',
   'shoot',
   'vocal',
   'front',
