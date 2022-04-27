@@ -21,6 +21,13 @@ body {
   background: black;
 }
 .user-letters {
+  border: solid grey 2px;
+  width: 25px;
+  height: 25px;
+  padding: 8px;
+  font-size: 30px;
+}
+.user-letters-incorrect {
   border: solid red 2px;
   width: 25px;
   height: 25px;

@@ -19,6 +19,8 @@ const UserInput = ({
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
   const [correct, setCorrect] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
+  const [display, setDisplay] = useState('user-letters-correct');
 
   useEffect(() => {
     setBoard('');
@@ -27,15 +29,24 @@ const UserInput = ({
 
   useEffect(() => {
     const updateTime = setInterval(function () {
-      if (correct == 0) {
+      if (correct > 0) {
+        setDisplay('users-letters-correct');
+        setCorrect(correct - 1);
+      }
+      if (incorrect > 0) {
+        setDisplay('user-letters-incorrect');
+        setIncorrect(incorrect - 1);
+      }
+      if (correct == 0 || incorrect == 0) {
         return;
       }
-      setCorrect(correct - 1);
-    }, 300);
+    }, 350);
     return () => {
       clearInterval(updateTime);
     };
-  }, [correct]);
+  }, [incorrect, correct]);
+
+  console.log(display);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
@@ -105,8 +116,11 @@ const UserInput = ({
         setValue('');
         setNextRound(true);
         setCorrect(1);
+        setDisplay('.users-letters-correct');
       } else {
         setCurrentTime(currentTime - 5);
+        setIncorrect(1);
+        setDisplay('.user-letters-incorrect');
         setValue('');
         setWordTracker(getMapWord(currentWord));
       }
@@ -118,9 +132,7 @@ const UserInput = ({
     <div>
       <div className="Game-board">
         {[...board.padEnd(5, ' ')].map((letter, index) => (
-          <div
-            className={correct > 0 ? 'user-letters-correct' : 'user-letters'}
-          >
+          <div className={incorrect > 0 ? display : 'user-letters'}>
             {letter.toUpperCase()}
           </div>
         ))}
