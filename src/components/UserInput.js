@@ -18,11 +18,24 @@ const UserInput = ({
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
   const [value, setValue] = useState('');
+  const [correct, setCorrect] = useState(0);
 
   useEffect(() => {
     setBoard('');
     setValue('');
   }, [restart]);
+
+  useEffect(() => {
+    const updateTime = setInterval(function () {
+      if (correct == 0) {
+        return;
+      }
+      setCorrect(correct - 1);
+    }, 300);
+    return () => {
+      clearInterval(updateTime);
+    };
+  }, [correct]);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
@@ -91,6 +104,7 @@ const UserInput = ({
         ]);
         setValue('');
         setNextRound(true);
+        setCorrect(1);
       } else {
         setCurrentTime(currentTime - 5);
         setValue('');
@@ -104,7 +118,11 @@ const UserInput = ({
     <div>
       <div className="Game-board">
         {[...board.padEnd(5, ' ')].map((letter, index) => (
-          <div className="user-letters">{letter.toUpperCase()}</div>
+          <div
+            className={correct > 0 ? 'user-letters-correct' : 'user-letters'}
+          >
+            {letter.toUpperCase()}
+          </div>
         ))}
       </div>
       <form onSubmit={handleSubmit}>
