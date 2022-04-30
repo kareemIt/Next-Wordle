@@ -94,7 +94,6 @@ const UserInput = ({
     const data = Axios.get(
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
-    console.log('hit');
     data
       .then((value) => {
         const validWord = value.data.includes('dMatch = true');
