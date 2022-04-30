@@ -94,33 +94,39 @@ const UserInput = ({
     const data = Axios.get(
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
-    data.then((value) => {
-      const validWord = value.data.includes('dMatch = true');
-      if (validWord) {
-        setCurrentRound(currentRound + 1);
-        setCurrentTime(currentTime + 10);
-        setResults([
-          ...results,
-          'Round:' +
-            currentRound +
-            ',Word:' +
-            board +
-            ',Letters:' +
-            currentWord,
-        ]);
-        setValue('');
-        setNextRound(true);
-        setCorrect(1);
-      } else {
+    console.log('hit');
+    data
+      .then((value) => {
+        const validWord = value.data.includes('dMatch = true');
+        if (validWord) {
+          setCurrentRound(currentRound + 1);
+          setCurrentTime(currentTime + 10);
+          setResults([
+            ...results,
+            'Round:' +
+              currentRound +
+              ',Word:' +
+              board +
+              ',Letters:' +
+              currentWord,
+          ]);
+          setValue('');
+          setNextRound(true);
+          setCorrect(1);
+        }
+      })
+      .catch((error) => {
         setCurrentTime(currentTime - 5);
         setIncorrect(1);
         setValue('');
         setWordTracker(getMapWord(currentWord));
-      }
-      setBoard('');
-      inputEl.current.value = '';
-    });
+      })
+      .finally(() => {
+        setBoard('');
+        inputEl.current.value = '';
+      });
   };
+
   return (
     <div>
       <div className="Game-board">
