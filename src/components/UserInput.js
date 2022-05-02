@@ -138,6 +138,7 @@ const UserInput = ({
                 ? 'user-letters-incorrect'
                 : 'user-letters'
             }
+            key={index}
           >
             {letter.toUpperCase()}
           </div>
