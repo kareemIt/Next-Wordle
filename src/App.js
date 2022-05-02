@@ -72,8 +72,10 @@ export default function App() {
         restart={restart}
       />
       <div className="Game-board">
-        {[...currentWord].map((letters) => (
-          <div className="letter">{letters.toUpperCase()}</div>
+        {[...currentWord].map((letters, index) => (
+          <div className="letter" key={index}>
+            {letters.toUpperCase()}
+          </div>
         ))}
       </div>
       <button onClick={randomizePosition}>randomize position</button>
