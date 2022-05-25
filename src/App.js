@@ -8,28 +8,28 @@ import { getRandomWord, getMapWord } from './utils/word';
 
 export default function App() {
   const [currentRound, setCurrentRound] = useState(1);
-  const [endScreen, setEndScreen] = useState(false);
+  const [showEndScreen, setShowEndScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(60);
-  const [startScreen, setStartScreen] = useState(false);
+  const [showStartScreen, setShowStartScreen] = useState(false);
   const [results, setResults] = useState([]);
   const [currentWord, setCurrentWord] = useState('');
   const [nextRound, setNextRound] = useState(false);
   const [wordTracker, setWordTracker] = useState();
-  const [restart, setRestart] = useState(false);
+  const [showRestart, setShowRestart] = useState(false);
 
   const randomizePosition = () => {
     currentWord.sort(() => Math.random() - 0.5);
   };
   useEffect(() => {
     setCurrentRound(1);
-    setEndScreen(false);
+    setShowEndScreen(false);
     setCurrentTime(60);
     setResults([]);
     setCurrentWord(getRandomWord());
     setNextRound(false);
     setWordTracker();
-    setRestart(false);
-  }, [restart]);
+    setShowRestart(false);
+  }, [showRestart]);
 
   useEffect(() => {
     setCurrentWord(getRandomWord());
@@ -41,12 +41,12 @@ export default function App() {
   }, [currentWord]);
   return (
     <div className="container">
-      <Instructions setStartScreen={setStartScreen} />
+      <Instructions setStartScreen={setShowStartScreen} />
       <GameEnd
-        endScreen={endScreen}
+        endScreen={showEndScreen}
         results={results}
         currentRound={currentRound}
-        setRestart={setRestart}
+        setRestart={setShowRestart}
       />
       <div className="title">
         <h1>Worddom</h1>
@@ -55,8 +55,8 @@ export default function App() {
       <Timer
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
-        setEndScreen={setEndScreen}
-        startScreen={startScreen}
+        setEndScreen={setShowEndScreen}
+        startScreen={showStartScreen}
       />
       <UserInput
         setCurrentRound={setCurrentRound}
@@ -69,7 +69,7 @@ export default function App() {
         wordTracker={wordTracker}
         setWordTracker={setWordTracker}
         results={results}
-        restart={restart}
+        restart={showRestart}
       />
       <div className="Game-board">
         {[...currentWord].map((letters, index) => (
