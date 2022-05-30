@@ -47,12 +47,10 @@ const UserInput = ({
     let input = e.currentTarget.value;
     let charInput = input[input.length - 1];
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      if (wordTracker.has(value[value.length - 1])) {
-        wordTracker.set(
-          value[value.length - 1],
-          wordTracker.get(value[value.length - 1]) + 1
-        );
-      }
+      wordTracker.set(
+        value[value.length - 1],
+        wordTracker.get(value[value.length - 1]) + 1
+      );
       let substring = input.substring(0, input.length);
       setBoard(substring);
       setValue(substring);
