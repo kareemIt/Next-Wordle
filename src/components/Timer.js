@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
 
-const Timer = ({ onTimeEnd, currentTime, onTimeDecrease, isPaused }) => {
+const Timer = ({ currentTime, setCurrentTime, setEndScreen, startScreen }) => {
+  if (currentTime <= 0) {
+    setEndScreen(true);
+  }
   useEffect(() => {
-    if (currentTime === 0) {
-      onTimeEnd(currentTime);
+    if (!startScreen) {
+      return;
     }
-  }, [currentTime]);
-
-  useEffect(() => {
-    if (currentTime <= 0 || isPaused) return;
-
-    const updateTime = setInterval(() => {
-      onTimeDecrease(currentTime - 1);
+    const updateTime = setInterval(function () {
+      setCurrentTime(currentTime - 1);
     }, 1000);
-
     return () => {
       clearInterval(updateTime);
     };
-  }, [currentTime]);
+  }, [currentTime, startScreen]);
 
   return (
     <div>

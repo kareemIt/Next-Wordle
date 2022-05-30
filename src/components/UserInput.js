@@ -1,52 +1,81 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import Axios from 'axios';
 import { getMapWord } from '../utils/word';
 
-const UserInput = ({ currentWord, onValue, onSubmit, value }) => {
-  const wordTracker = useMemo(() => getMapWord(currentWord), [currentWord]);
-  const [correctness, setCorrectness] = useState(0);
-  const [charInput, setcharInput] = useState('');
+const UserInput = ({
+  setCurrentRound,
+  currentRound,
+  currentTime,
+  setCurrentTime,
+  currentWord,
+  setResults,
+  setNextRound,
+  wordTracker,
+  setWordTracker,
+  results,
+  restart,
+}) => {
+  const [board, setBoard] = useState('');
+  const inputEl = useRef(null);
+  const [value, setValue] = useState('');
+  const [correct, setCorrect] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
 
   useEffect(() => {
-    const updateTime = setInterval(() => {
-      if (correctness !== 0) setCorrectness(0);
-    }, 450);
+    setBoard('');
+    setValue('');
+  }, [restart]);
 
+  useEffect(() => {
+    const updateTime = setInterval(function () {
+      if (correct > 0) {
+        setCorrect(correct - 1);
+      }
+      if (incorrect > 0) {
+        setIncorrect(incorrect - 1);
+      }
+      if (correct == 0 || incorrect == 0) {
+        return;
+      }
+    }, 450);
     return () => {
       clearInterval(updateTime);
     };
-  }, [correctness]);
+  }, [incorrect, correct]);
 
   const handleKeyDown = (e) => {
-    //check if letter is in map then remove it, if u back space then add back 1 to
-    //the maps if the input is empty return, update vlaue
-    const input = e.currentTarget.value;
-    setcharInput(input[input.length - 1]);
-    console.log(wordTracker.get(input[input.length - 1]) == 0)
+    let input = e.currentTarget.value;
+    let charInput = input[input.length - 1];
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
-      if (wordTracker.has(input[input.length - 1])) return;
-
-      wordTracker.set(charInput, wordTracker.get(charInput) + 1);
-      onValue(input);
-      setcharInput(input[input.length - 1]);
+      if (wordTracker.has(value[value.length - 1])) {
+        wordTracker.set(
+          value[value.length - 1],
+          wordTracker.get(value[value.length - 1]) + 1
+        );
+      }
+      let substring = input.substring(0, input.length);
+      setBoard(substring);
+      setValue(substring);
       return;
     }
-    console.log(wordTracker);
-    // if no more chars, return early
-    if (!wordTracker.has(input[input.length - 1])) return;
-    if (wordTracker.get(input[input.length - 1]) == 0) {
-      console.log(input);
+    if (wordTracker.get(charInput) == 0) {
       return;
     }
-
-    wordTracker.set(charInput, wordTracker.get(charInput) - 1);
-    console.log(input);
-    onValue(input);
-    setcharInput(input[input.length - 1]);
+    if (wordTracker.has(charInput) && wordTracker.get(charInput) != 0) {
+      wordTracker.set(charInput, wordTracker.get(charInput) - 1);
+    }
+    if (
+      !currentWord.includes([...input][board.length].toLowerCase()) ||
+      !wordTracker.has(charInput)
+    ) {
+      return;
+    }
+    setBoard(input);
+    setValue(input);
   };
 
-  const inputEl = useRef(null);
   useEffect(() => {
-    const focus = () => {
+    const focus = (e) => {
       if (inputEl.current) {
         inputEl.current.focus();
       }
@@ -57,27 +86,59 @@ const UserInput = ({ currentWord, onValue, onSubmit, value }) => {
     };
   }, []);
 
-  const getClassName = () => {
-    if (correctness === 1) return 'user-letters-correct';
-    if (correctness === -1) return 'user-letters-incorrect';
-    return 'user-letters';
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.length < 5) return;
-
-    console.log(onSubmit);
-    const submitted = onSubmit();
-    console.log(submitted);
-    submitted ? setCorrectness(1) : setCorrectness(-1);
+    if (inputEl.current.value.length < 5) {
+      return;
+    }
+    const data = Axios.get(
+      'https://www.wordreference.com/es/translation.asp?tranword=' + board
+    );
+    data.then((value) => {
+      const validWord = value.data.includes('dMatch = true');
+      if (validWord) {
+        setCurrentRound(currentRound + 1);
+        setCurrentTime(currentTime + 10);
+        setResults([
+          ...results,
+          'Round:' +
+            currentRound +
+            ',Word:' +
+            board +
+            ',Letters:' +
+            currentWord,
+        ]);
+        setValue('');
+        setNextRound(true);
+        setCorrect(1);
+        setBoard('');
+        inputEl.current.value = '';
+      }
+      if (!validWord) {
+        setCurrentTime(currentTime - 5);
+        setIncorrect(1);
+        setValue('');
+        setWordTracker(getMapWord(currentWord));
+        setBoard('');
+        inputEl.current.value = '';
+      }
+    });
   };
 
   return (
     <div>
       <div className="Game-board">
-        {[...value.padEnd(5, ' ')].map((letter, index) => (
-          <div className={getClassName()} key={index}>
+        {[...board.padEnd(5, ' ')].map((letter, index) => (
+          <div
+            className={
+              correct > 0
+                ? 'user-letters-correct'
+                : incorrect > 0
+                ? 'user-letters-incorrect'
+                : 'user-letters'
+            }
+            key={index}
+          >
             {letter.toUpperCase()}
           </div>
         ))}
