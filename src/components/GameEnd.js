@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
-  const reStart = () => {
-    setRestart(true);
-  };
-
+const GameEnd = ({ endScreen, results, currentRound, restartfunction }) => {
   return (
     <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-game-end">
@@ -17,7 +13,7 @@ const GameEnd = ({ endScreen, results, currentRound, setRestart }) => {
           ))}
         </div>
         <br />
-        <button onClick={reStart} className="close-button">
+        <button onClick={restartfunction} className="close-button">
           Restart
         </button>
       </div>

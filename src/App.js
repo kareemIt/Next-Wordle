@@ -20,7 +20,7 @@ export default function App() {
   const randomizePosition = () => {
     currentWord.sort(() => Math.random() - 0.5);
   };
-  useEffect(() => {
+  const restartGame = () => {
     setCurrentRound(1);
     setShowEndScreen(false);
     setCurrentTime(60);
@@ -29,7 +29,7 @@ export default function App() {
     setNextRound(false);
     setWordTracker();
     setShowRestart(false);
-  }, [showRestart]);
+  };
 
   useEffect(() => {
     setCurrentWord(getRandomWord());
@@ -46,7 +46,7 @@ export default function App() {
         endScreen={showEndScreen}
         results={results}
         currentRound={currentRound}
-        setRestart={setShowRestart}
+        restartFunction={restartGame}
       />
       <div className="title">
         <h1>Worddom</h1>
