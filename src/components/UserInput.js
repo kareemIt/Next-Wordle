@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 const UserInput = ({
   currentWord,
   wordTracker,
-  restart,
   onSubmit,
   board,
   updateBoard,
@@ -10,11 +9,6 @@ const UserInput = ({
   updateCorrectness,
 }) => {
   const inputEl = useRef(null);
-
-  useEffect(() => {
-    updateBoard('');
-  }, [restart]);
-
   useEffect(() => {
     const updateTime = setInterval(function () {
       if (correctness != 0) updateCorrectness(0);
