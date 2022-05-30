@@ -30,6 +30,9 @@ export default function App() {
     setWordTracker();
     setShowRestart(false);
   };
+  const handleFinishReading = () => {
+    setShowStartScreen(true);
+  };
 
   useEffect(() => {
     setCurrentWord(getRandomWord());
@@ -41,13 +44,17 @@ export default function App() {
   }, [currentWord]);
   return (
     <div className="container">
-      <Instructions setStartScreen={setShowStartScreen} />
-      <GameEnd
-        endScreen={showEndScreen}
-        results={results}
-        currentRound={currentRound}
-        restartFunction={restartGame}
-      />
+      {!showStartScreen && (
+        <Instructions onFinishReading={handleFinishReading} />
+      )}
+
+      {showEndScreen && (
+        <GameEnd
+          results={results}
+          currentRound={currentRound}
+          restartFunc={restartGame}
+        />
+      )}
       <div className="title">
         <h1>Worddom</h1>
         <h1>Round {currentRound}</h1>

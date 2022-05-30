@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Instructions = ({ setStartScreen }) => {
-  const [modal, setModal] = useState(true);
-
-  const onClick = () => {
-    setStartScreen(true);
-    setModal(!modal);
-  };
-
+const Instructions = ({ onFinishReading }) => {
   return (
-    <div className={modal ? 'modal' : 'modal-off'}>
+    <div className="modal">
       <div className="modal-content">
         <p>Instructions:</p>
         <p>Guess the word before you run out of time.</p>
@@ -34,7 +27,7 @@ const Instructions = ({ setStartScreen }) => {
             If you put in a word that isn't real then you will lose 5 seconds.
           </li>
         </ul>
-        <button className="close-button" onClick={onClick}>
+        <button className="close-button" onClick={onFinishReading}>
           Start
         </button>
       </div>
