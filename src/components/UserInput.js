@@ -3,29 +3,24 @@ import Axios from 'axios';
 import { getMapWord } from '../utils/word';
 
 const UserInput = ({
-  setCurrentRound,
-  currentRound,
-  currentTime,
-  setCurrentTime,
   currentWord,
-  setResults,
-  setNextRound,
   wordTracker,
-  setWordTracker,
-  results,
   restart,
+  onSubmit,
+  board,
+  updateBoard,
+  correctness,
+  updateCorrectness,
 }) => {
-  const [board, setBoard] = useState('');
   const inputEl = useRef(null);
-  const [correctness, setCorrectness] = useState(0);
 
   useEffect(() => {
-    setBoard('');
+    updateBoard('');
   }, [restart]);
 
   useEffect(() => {
     const updateTime = setInterval(function () {
-      if (correctness != 0) setCorrectness(0);
+      if (correctness != 0) updateCorrectness(0);
     }, 450);
     return () => {
       clearInterval(updateTime);
@@ -40,7 +35,7 @@ const UserInput = ({
         board[board.length - 1],
         wordTracker.get(board[board.length - 1]) + 1
       );
-      setBoard(input);
+      updateBoard(input);
       return;
     }
     if (wordTracker.get(charInput) == 0) return;
@@ -49,7 +44,7 @@ const UserInput = ({
       wordTracker.set(charInput, wordTracker.get(charInput) - 1);
     }
 
-    setBoard(input);
+    updateBoard(input);
   };
 
   useEffect(() => {
@@ -68,34 +63,7 @@ const UserInput = ({
     e.preventDefault();
     if (inputEl.current.value.length < 5) return;
 
-    const data = Axios.get(
-      'https://www.wordreference.com/es/translation.asp?tranword=' + board
-    );
-    data.then((value) => {
-      const validWord = value.data.includes('dMatch = true');
-      if (validWord) {
-        setCurrentRound(currentRound + 1);
-        setCurrentTime(currentTime + 10);
-        setResults([
-          ...results,
-          'Round:' +
-            currentRound +
-            ',Word:' +
-            board +
-            ',Letters:' +
-            currentWord,
-        ]);
-        setNextRound(true);
-        setCorrectness(1);
-      }
-      if (!validWord) {
-        setCurrentTime(currentTime - 5);
-        setCorrectness(-1);
-        setWordTracker(getMapWord(currentWord));
-      }
-      setBoard('');
-      inputEl.current.value = '';
-    });
+    onSubmit();
   };
   const getClassName = () => {
     if (correctness === 1) return 'user-letters-correct';

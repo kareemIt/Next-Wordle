@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 const Timer = ({ currentTime, setCurrentTime, setEndScreen, startScreen }) => {
   if (currentTime <= 0) {
+    console.log('Hit');
     setEndScreen(true);
   }
   useEffect(() => {
