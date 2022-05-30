@@ -17,8 +17,7 @@ const UserInput = ({
 }) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
-  const [correct, setCorrect] = useState(0);
-  const [incorrect, setIncorrect] = useState(0);
+  const [correctness, setCorrectness] = useState(0);
 
   useEffect(() => {
     setBoard('');
@@ -26,20 +25,12 @@ const UserInput = ({
 
   useEffect(() => {
     const updateTime = setInterval(function () {
-      if (correct > 0) {
-        setCorrect(correct - 1);
-      }
-      if (incorrect > 0) {
-        setIncorrect(incorrect - 1);
-      }
-      if (correct == 0 || incorrect == 0) {
-        return;
-      }
+      if (correctness != 0) setCorrectness(0);
     }, 450);
     return () => {
       clearInterval(updateTime);
     };
-  }, [incorrect, correct]);
+  }, [correctness]);
 
   const handleKeyDown = (e) => {
     let input = e.currentTarget.value;
@@ -75,9 +66,8 @@ const UserInput = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputEl.current.value.length < 5) {
-      return;
-    }
+    if (inputEl.current.value.length < 5) return;
+
     const data = Axios.get(
       'https://www.wordreference.com/es/translation.asp?tranword=' + board
     );
@@ -96,32 +86,28 @@ const UserInput = ({
             currentWord,
         ]);
         setNextRound(true);
-        setCorrect(1);
+        setCorrectness(1);
       }
       if (!validWord) {
         setCurrentTime(currentTime - 5);
-        setIncorrect(1);
+        setCorrectness(-1);
         setWordTracker(getMapWord(currentWord));
       }
       setBoard('');
       inputEl.current.value = '';
     });
   };
+  const getClassName = () => {
+    if (correctness === 1) return 'user-letters-correct';
+    if (correctness === -1) return 'user-letters-incorrect';
+    return 'user-letters';
+  };
 
   return (
     <div>
       <div className="Game-board">
         {[...board.padEnd(5, ' ')].map((letter, index) => (
-          <div
-            className={
-              correct > 0
-                ? 'user-letters-correct'
-                : incorrect > 0
-                ? 'user-letters-incorrect'
-                : 'user-letters'
-            }
-            key={index}
-          >
+          <div className={getClassName()} key={index}>
             {letter.toUpperCase()}
           </div>
         ))}
