@@ -53,7 +53,7 @@ const UserInput = ({
       return;
     }
     if (wordTracker.get(charInput) == 0) return;
-    if (wordTracker.has(charInput) && wordTracker.get(charInput) != 0) {
+    if (wordTracker.get(charInput) != 0) {
       wordTracker.set(charInput, wordTracker.get(charInput) - 1);
     }
     if (
