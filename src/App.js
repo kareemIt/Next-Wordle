@@ -11,7 +11,7 @@ export default function App() {
   const [currentWord, setCurrentWord] = useState('');
   const [currentRound, setCurrentRound] = useState(1);
   const [showEndScreen, setShowEndScreen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(2);
+  const [currentTime, setCurrentTime] = useState(60);
   const [showStartScreen, setShowStartScreen] = useState(false);
   const [results, setResults] = useState([]);
   const [nextRound, setNextRound] = useState(false);
