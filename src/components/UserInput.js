@@ -1,7 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Axios from 'axios';
-import { getMapWord } from '../utils/word';
-
+import React, { useRef, useEffect } from 'react';
 const UserInput = ({
   currentWord,
   wordTracker,

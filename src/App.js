@@ -32,6 +32,7 @@ export default function App() {
     setNextRound(false);
     setWordTracker();
     setShowRestart(false);
+    setBoard('');
   };
   const handleFinishReading = () => {
     setShowStartScreen(true);
@@ -88,13 +89,12 @@ export default function App() {
         <Instructions onFinishReading={handleFinishReading} />
       )}
 
-      {showEndScreen && (
-        <GameEnd
-          results={results}
-          currentRound={currentRound}
-          restartFunc={restartGame}
-        />
-      )}
+      <GameEnd
+        endScreen={showEndScreen}
+        results={results}
+        currentRound={currentRound}
+        restartFunc={restartGame}
+      />
 
       <div className="title">
         <h1>Worddom</h1>
@@ -105,7 +105,7 @@ export default function App() {
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
         setEndScreen={setShowEndScreen}
-        startScreen={showStartScreen}
+        showStartScreen={showStartScreen}
       />
 
       <UserInput

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameEnd = ({ endScreen, results, currentRound, restartfunction }) => {
+const GameEnd = ({ endScreen, results, currentRound, restartFunc }) => {
   return (
     <div className={endScreen ? 'modal' : 'modal-off'}>
       <div className="modal-game-end">
@@ -13,7 +13,7 @@ const GameEnd = ({ endScreen, results, currentRound, restartfunction }) => {
           ))}
         </div>
         <br />
-        <button onClick={restartfunction} className="close-button">
+        <button onClick={restartFunc} className="close-button">
           Restart
         </button>
       </div>
