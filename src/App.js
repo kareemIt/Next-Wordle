@@ -16,7 +16,6 @@ export default function App() {
   const [results, setResults] = useState([]);
   const [nextRound, setNextRound] = useState(false);
   const [wordTracker, setWordTracker] = useState();
-  const [showRestart, setShowRestart] = useState(false);
   const [board, setBoard] = useState('');
   const [correctness, setCorrectness] = useState(0);
 
@@ -31,7 +30,6 @@ export default function App() {
     setCurrentWord(getRandomWord());
     setNextRound(false);
     setWordTracker();
-    setShowRestart(false);
     setBoard('');
   };
   const handleFinishReading = () => {
