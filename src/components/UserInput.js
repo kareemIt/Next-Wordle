@@ -51,9 +51,8 @@ const UserInput = ({
         value[value.length - 1],
         wordTracker.get(value[value.length - 1]) + 1
       );
-      let substring = input.substring(0, input.length);
-      setBoard(substring);
-      setValue(substring);
+      setBoard(input);
+      setValue(input);
       return;
     }
     if (wordTracker.get(charInput) == 0) return;
