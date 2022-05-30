@@ -17,13 +17,11 @@ const UserInput = ({
 }) => {
   const [board, setBoard] = useState('');
   const inputEl = useRef(null);
-  const [value, setValue] = useState('');
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
 
   useEffect(() => {
     setBoard('');
-    setValue('');
   }, [restart]);
 
   useEffect(() => {
@@ -48,11 +46,10 @@ const UserInput = ({
     let charInput = input[input.length - 1];
     if (e.nativeEvent.inputType == 'deleteContentBackward') {
       wordTracker.set(
-        value[value.length - 1],
-        wordTracker.get(value[value.length - 1]) + 1
+        board[board.length - 1],
+        wordTracker.get(board[board.length - 1]) + 1
       );
       setBoard(input);
-      setValue(input);
       return;
     }
     if (wordTracker.get(charInput) == 0) return;
@@ -66,7 +63,6 @@ const UserInput = ({
       return;
     }
     setBoard(input);
-    setValue(input);
   };
 
   useEffect(() => {
@@ -111,7 +107,6 @@ const UserInput = ({
         setIncorrect(1);
         setWordTracker(getMapWord(currentWord));
       }
-      setValue('');
       setBoard('');
       inputEl.current.value = '';
     });
@@ -139,7 +134,7 @@ const UserInput = ({
         <input
           onChange={handleKeyDown}
           ref={inputEl}
-          value={value}
+          value={board}
           type="text"
           maxLength="5"
           className="user-input"
