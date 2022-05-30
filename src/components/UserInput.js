@@ -103,20 +103,17 @@ const UserInput = ({
             ',Letters:' +
             currentWord,
         ]);
-        setValue('');
         setNextRound(true);
         setCorrect(1);
-        setBoard('');
-        inputEl.current.value = '';
       }
       if (!validWord) {
         setCurrentTime(currentTime - 5);
         setIncorrect(1);
-        setValue('');
         setWordTracker(getMapWord(currentWord));
-        setBoard('');
-        inputEl.current.value = '';
       }
+      setValue('');
+      setBoard('');
+      inputEl.current.value = '';
     });
   };
 
