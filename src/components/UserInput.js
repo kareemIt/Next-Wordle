@@ -53,15 +53,11 @@ const UserInput = ({
       return;
     }
     if (wordTracker.get(charInput) == 0) return;
+    if (!currentWord.includes([...input][board.length].toLowerCase())) return;
     if (wordTracker.get(charInput) != 0) {
       wordTracker.set(charInput, wordTracker.get(charInput) - 1);
     }
-    if (
-      !currentWord.includes([...input][board.length].toLowerCase()) ||
-      !wordTracker.has(charInput)
-    ) {
-      return;
-    }
+
     setBoard(input);
   };
 
