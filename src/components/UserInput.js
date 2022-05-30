@@ -58,9 +58,7 @@ const UserInput = ({
       setValue(substring);
       return;
     }
-    if (wordTracker.get(charInput) == 0) {
-      return;
-    }
+    if (wordTracker.get(charInput) == 0) return;
     if (wordTracker.has(charInput) && wordTracker.get(charInput) != 0) {
       wordTracker.set(charInput, wordTracker.get(charInput) - 1);
     }
